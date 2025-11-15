@@ -45,7 +45,6 @@ export const generateRandomString = (length: number = 32): string => {
  */
 export const formatFileSize = (bytes: number): string => {
   if (bytes === 0) return '0 Bytes';
-
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
@@ -140,4 +139,18 @@ export const isAllowedFileType = (mimetype: string, filename: string): boolean =
   const ext = filename.substring(filename.lastIndexOf('.')).toLowerCase();
   
   return allowedTypes.includes(ext);
+};
+
+/**
+ * Delay execution (for testing purposes)
+ */
+export const delay = (ms: number): Promise<void> => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
+/**
+ * Check if file is image
+ */
+export const isImageFile = (mimetype: string): boolean => {
+  return mimetype.startsWith('image/');
 };
