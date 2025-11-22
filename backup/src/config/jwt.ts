@@ -5,3 +5,7 @@ export const generateToken = (id: string): string => {
     expiresIn: process.env.JWT_EXPIRE || '7d'
   });
 };
+
+export const verifyToken = (token: string) => {
+  return jwt.verify(token, process.env.JWT_SECRET as string);
+};
